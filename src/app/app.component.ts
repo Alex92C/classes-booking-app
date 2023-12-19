@@ -24,37 +24,44 @@ import { UsersService } from './services/users.service';
     RouterModule,
   ],
   template: `
-    <mat-toolbar color="primary">
-      Angular Sign Up App
-      <button
-        mat-button
-        *ngIf="currentUser()"
-        [mat-menu-trigger-for]="userMenu"
-      >
-        {{ currentUser()?.displayName }}
-        <mat-icon>expand_more</mat-icon>
-      </button>
+    <!-- <div class="bg-image-full"> -->
+    <div class="bg-video">
+      <video autoplay muted loop>
+        <source src="/assets/background.mp4" type="video/mp4" />
+      </video>
 
-      <mat-menu #userMenu="matMenu">
-        <button mat-menu-item routerLink="/profile">
-          <mat-icon>account_circle</mat-icon>
-          Profile
+      <mat-toolbar color="primary">
+        Angular Sign Up App
+        <button
+          mat-button
+          *ngIf="currentUser()"
+          [mat-menu-trigger-for]="userMenu"
+        >
+          {{ currentUser()?.displayName }}
+          <mat-icon>expand_more</mat-icon>
         </button>
-        <button mat-menu-item (click)="logout()">
-          <mat-icon>logout</mat-icon>
-          Logout
-        </button>
-      </mat-menu>
-    </mat-toolbar>
-    <div class="container">
-      <router-outlet></router-outlet>
+
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item routerLink="/profile">
+            <mat-icon>account_circle</mat-icon>
+            Profile
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            Logout
+          </button>
+        </mat-menu>
+      </mat-toolbar>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-
-    <!-- <mat-progress-spinner
+    <!-- </div> -->
+    <mat-progress-spinner
       mode="indeterminate"
       diameter="50"
       *ngIf="loading()"
-    ></mat-progress-spinner> -->
+    ></mat-progress-spinner>
   `,
   styles: [
     `
@@ -79,16 +86,17 @@ export class AppComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    public loading: NotificationService,
+    public notificationService: NotificationService,
     public usersService: UsersService
   ) {}
 
   currentUser = this.usersService.currentUserProfile;
+  loading = this.notificationService.loading;
 
   async logout() {
-    this.loading.showLoading();
+    this.notificationService.showLoading();
     await this.authService.logout();
-    this.loading.hideLoading();
+    this.notificationService.hideLoading();
     this.router.navigate(['/login']);
   }
 
