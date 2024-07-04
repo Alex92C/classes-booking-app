@@ -1,0 +1,14 @@
+<div class="center-text">
+  <h1>Congratulations! You reached the homepage</h1>
+  <img width="120" height="120" class="mat-elevation-z1"
+    [src]="currentUser()?.photoURL ?? '/assets/image-placeholder.png'" alt="profile image" />
+  <h2>{{ currentUser()?.displayName }} welcome inside our app!</h2>
+  <p-calendar class="max-w-full" [(ngModel)]="selectedDate" [inline]="true" [showWeek]="true" [minDate]="minDate"
+    [maxDate]="maxDate" [yearNavigator]="false"></p-calendar>
+
+  <!-- <button class="btn btn-primary px-4 text-white" (click)="onAddDocument()">Add Docuement</button> -->
+
+  <app-list-view-item [selectedDate]="selectedDate"></app-list-view-item>
+  <button class="btn btn-primary px-4 text-white" (click)="onViewAllClick()"
+    *ngIf="(viewAllClicked$ | async) === false">View all classes</button>
+</div>

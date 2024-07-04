@@ -14,90 +14,15 @@ import { UsersService } from '../../services/users.service';
   standalone: true,
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule,
     RouterModule,
   ],
-  template: `
-    <div class="card mat-elevation-z5">
-      <h1>Login</h1>
-      <div class="center">
-        <img
-          class="social-sign-in"
-          role="button"
-          src="/assets/google-sign-in.png"
-          alt="Google Sign In"
-          width="70%"
-          (click)="googleSignIn()"
-        />
-      </div>
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
-        <mat-form-field>
-          <input matInput placeholder="Email" formControlName="email" />
-          <mat-error *ngIf="email?.hasError('required')">
-            Email is required
-          </mat-error>
-          <mat-error *ngIf="email?.hasError('email')">
-            Email is invalid
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input
-            matInput
-            type="password"
-            placeholder="Password"
-            formControlName="password"
-          />
-          <mat-error *ngIf="password?.hasError('required')">
-            Password is required
-          </mat-error>
-        </mat-form-field>
-        <div class="center margin-top">
-          <button mat-raised-button type="submit" color="primary">Login</button>
-        </div>
-        <div class="login-footer">
-          <a class="sign-up" routerLink="/sign-up">Sign up!</a>
-          <a (click)="forgotPassword()"> Forgot Password?</a>
-        </div>
-      </form>
-    </div>
-  `,
-  styles: `
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 
-
-
-.social-sign-in {
-  cursor: pointer;
-  margin-bottom: 48px;
-  border-radius: 10px;
-  
-}
-
-.login-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 32px;
-
-  .sign-up {
-    font-size: 1rem;
-    margin-left: 8px;
-  }
-
-
-  a {
-    cursor: pointer;
-    text-decoration: underline;
-    color: darkblue;
-  }
-}
-
- 
-
-  
-  `,
 })
 export class LoginComponent {
   constructor(
@@ -106,7 +31,7 @@ export class LoginComponent {
     private router: Router,
     private notifications: NotificationService,
     private usersService: UsersService
-  ) {}
+  ) { }
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

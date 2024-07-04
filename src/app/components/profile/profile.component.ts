@@ -21,86 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
   ],
-  template: `
-    <div class="card mat-elevation-z5">
-      <h1>Update Profile</h1>
-
-      <div class="profile-image">
-        <img
-          width="120"
-          height="120"
-          class="mat-elevation-z1"
-          [src]="currentUser()?.photoURL ?? '/assets/image-placeholder.png'"
-          alt="profile image"
-        />
-        <button mat-mini-fab (click)="inputField.click()">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </div>
-      <input #inputField type="file" hidden (change)="uploadFile($event)" />
-      <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
-        <div class="row">
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="First Name"
-              formControlName="firstName"
-            />
-          </mat-form-field>
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="Last Name"
-              formControlName="lastName"
-            />
-          </mat-form-field>
-        </div>
-        <div class="row">
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="Display Name"
-              formControlName="displayName"
-            />
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Phone" formControlName="phone" />
-          </mat-form-field>
-        </div>
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="address" />
-        </mat-form-field>
-        <div class="center margin-top">
-          <button mat-raised-button type="submit" color="primary">Save</button>
-        </div>
-      </form>
-    </div>
-  `,
-  styles: `
-  .row {
-    display: flex;
-    gap: 16px;
-  }
-  .profile-image {
-    position: relative;
-    width: 120px;
-    margin: auto;
-
-
-    > img {
-      border-radius: 100%;
-      object-fit: cover;
-      object-position: center;
-  }
-
-  > button {
-    position: absolute;
-    bottom: 10px;
-    right: 0;
-  }
-  }
-  
-  `,
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
   constructor(

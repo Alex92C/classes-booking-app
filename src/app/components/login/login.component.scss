@@ -1,0 +1,23 @@
+.social-sign-in {
+  cursor: pointer;
+  margin-bottom: 48px;
+  border-radius: 10px;
+}
+
+.login-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+
+  .sign-up {
+    font-size: 1rem;
+    margin-left: 8px;
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+    color: darkblue;
+  }
+}

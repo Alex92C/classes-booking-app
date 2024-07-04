@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LandingComponent } from './landing.component';
+import { ListViewItemComponent } from './list-view-item.component';
 
-describe('LandingComponent', () => {
-  let component: LandingComponent;
-  let fixture: ComponentFixture<LandingComponent>;
+describe('ListViewItemComponent', () => {
+  let component: ListViewItemComponent;
+  let fixture: ComponentFixture<ListViewItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LandingComponent]
+      imports: [ListViewItemComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(LandingComponent);
+    fixture = TestBed.createComponent(ListViewItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

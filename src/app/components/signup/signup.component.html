@@ -1,0 +1,28 @@
+<div class="card mat-elevation-z5">
+  <h1>Sign Up</h1>
+  <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" />
+      <mat-error *ngIf="name?.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email address" formControlName="email" />
+      <mat-error *ngIf="email?.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="email?.hasError('email')">Enter a valid email address</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" formControlName="password" />
+      <mat-error *ngIf="password?.hasError('required')">Password is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Confirm password" formControlName="confirmPassword" />
+      <mat-error *ngIf="confirmPassword?.hasError('required')">Confirm password is required</mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="signUpForm.hasError('passwordsDontMatch')">Passwords don't match</mat-error>
+
+    <div class="center margin-top">
+      <button mat-raised-button type="submit" color="primary">Sign Up</button>
+    </div>
+  </form>
+</div>

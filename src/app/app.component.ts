@@ -22,6 +22,7 @@ import { UsersService } from './services/users.service';
     MatIconModule,
     MatProgressSpinnerModule,
     RouterModule,
+
   ],
   template: `
     <!-- <div class="bg-image-full"> -->
@@ -88,7 +89,7 @@ export class AppComponent {
     private router: Router,
     public notificationService: NotificationService,
     public usersService: UsersService
-  ) {}
+  ) { }
 
   currentUser = this.usersService.currentUserProfile;
   loading = this.notificationService.loading;

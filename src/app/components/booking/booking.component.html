@@ -1,0 +1,13 @@
+<div class="card-md mat-elevation-z5">
+  <div class="center-text">
+    <h1>Confirm your booking</h1>
+    <h2>{{ (item$ | async)?.date }} at {{ (item$ | async)?.time }}</h2>
+    <h3 class="mt-3"><strong>{{ (item$ | async)?.class }}</strong></h3>
+    <p>{{ (item$ | async)?.instructor }}</p>
+    <!-- <img [src]="(item$ | async)?.image" alt="class image" class=" card-image" /> -->
+    <!-- <p>{{ (item$ | async)?.description }}</p> -->
+    <p>Available 5 out of {{ (item$ | async)?.maxAttendance }} spots</p>
+    <!-- <p>{{ (item$ | async)?.location }}</p> -->
+    <p>Refud and no-show terms</p>
+  </div>
+</div>

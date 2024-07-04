@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Firestore, doc, docData } from '@angular/fire/firestore';
 import { ProfileUser } from '../models/user';
-import { setDoc, updateDoc } from 'firebase/firestore';
+import { setDoc, updateDoc, addDoc } from 'firebase/firestore';
 import { AuthService } from './auth.service';
 import { Observable, of, switchMap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Storage, ref } from '@angular/fire/storage';
 import { uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 @Injectable({
   providedIn: 'root',
@@ -45,4 +46,5 @@ export class UsersService {
     const result = await uploadBytes(storageRef, image);
     return await getDownloadURL(result.ref);
   }
+
 }

@@ -1,4 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+$primary: #9294f8;
+$highlight: #4b4eee;
 
 html,
 body {
@@ -28,9 +32,49 @@ body {
   }
 }
 
-.center {
+.card-md {
+  @extend .card;
+  max-width: 600px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.bg-color-primary {
+  background-color: $primary;
+}
+
+.bg-color-highlight {
+  background-color: $highlight;
+}
+
+.border-color-primary {
+  border: 3px solid $primary;
+}
+
+.border-color-highlight {
+  border: 3px solid $highlight;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-justify-center{
+  display: flex;
+  justify-content: center;
+}
+
+.flex-align-center{
+  display: flex;
+  align-items: center;
 }
 
 .center-text {
@@ -71,7 +115,7 @@ body {
 
 .bg-video {
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
   height: 100vh;
 }
 
