@@ -11,6 +11,7 @@ import {
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { BookingItemComponent } from './components/booking-item/booking-item.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
@@ -44,6 +45,11 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
+  {
+    path: 'booking-item',
+    component: BookingItemComponent,
     ...canActivate(redirectUnauthorizedToLogin),
   },
 ];
