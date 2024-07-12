@@ -9,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class BookingItemComponent {
 
+className: any = {name: 'Zumba', 
+                  img: 'assets/Pilates icon.jpeg',
+                  time: '15:00 am',
+                  trainer: 'Alex'
+                }
+
 }
+
+

@@ -3,13 +3,16 @@
       <h2>Booked</h2>
     </div>
     <div>
-      <div class="flex-justify-center">
-        <div class="col-4 mt-3">
-          <span><em>Time</em></span>
-          <h3 class="mt-3"><strong>Zumba</strong></h3>
-          <p>Alex</p>
+      <div class="d-flex justify-content-center">
+        <div class="col-5">
+          <span><em>Time:{{className.time}}</em></span>
+          <h3 class="mt-3"><strong>{{className.name}}</strong></h3>
+          <p>{{className.trainer}}</p>
         </div>
-        <div class="col-4 flex-center">
+        <div class="col-4">
+            <img [src]="className.img" alt="class image" class="card-image" />
+        </div>
+        <div class="col-2 flex-center mb-4">
           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash"></i>
             Delete Class
           </button>
