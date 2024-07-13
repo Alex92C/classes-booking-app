@@ -32,6 +32,12 @@ import { UsersService } from './services/users.service';
 
       <mat-toolbar color="primary">
         Angular Sign Up App
+
+        <button class="home" mat-menu-item routerLink="/home">
+         <i class="fa-solid fa-house"></i>
+           Home
+        </button>
+
         <button
           mat-button
           *ngIf="currentUser()"
@@ -50,8 +56,13 @@ import { UsersService } from './services/users.service';
             <mat-icon>logout</mat-icon>
             Logout
           </button>
+          <button mat-menu-item routerLink="/booking-item">
+          <i class="fa-solid fa-dumbbell me-3"></i>
+          Classes
+          </button>
         </mat-menu>
       </mat-toolbar>
+
       <div class="container">
         <router-outlet></router-outlet>
       </div>
@@ -65,6 +76,11 @@ import { UsersService } from './services/users.service';
   `,
   styles: [
     `
+      .home {
+        color: white;
+        width: 70%;
+      }
+      
       .container {
         padding: 24px;
       }
