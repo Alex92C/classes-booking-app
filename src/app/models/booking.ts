@@ -1,8 +1,7 @@
-export interface BookingItem {
-  uid: string;
+export interface IBookingItem {
+  class: string;
   date: string;
   time: string;
-  name: string;
-  lastName: string;
-  class: string;
+  image: string;
+  instructor: string;
 }

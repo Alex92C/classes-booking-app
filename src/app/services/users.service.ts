@@ -13,11 +13,21 @@ import { uploadBytes, getDownloadURL } from 'firebase/storage';
   providedIn: 'root',
 })
 export class UsersService {
+  private _currentUserId: string | null = null;
+  private _currentUserFullName: string | null = null;
+  private _currentUserEmail: string | null = null;
+
   constructor(
     private firestore: Firestore,
     private authService: AuthService,
     private storage: Storage
-  ) {}
+  ) {
+    this.authService.currentUser$.subscribe(user => {
+      this._currentUserId = user?.uid || null;
+      this._currentUserFullName = user?.displayName || null;
+      this._currentUserEmail = user?.email || null;
+    });
+  }
 
   private currentUserProfile$ = this.authService.currentUser$.pipe(
     switchMap((user) => {
@@ -30,6 +40,23 @@ export class UsersService {
   );
 
   currentUserProfile = toSignal(this.currentUserProfile$);
+
+  get currentUserId(): string | null {
+    return this._currentUserId;
+  }
+  get currentUserEmail(): string | null {
+    return this._currentUserEmail;
+  }
+  get currentUserFullName(): string | null {
+    return this._currentUserFullName;
+  }
+  get currentUserData(): { id: string | null, email: string | null, fullName: string | null } {
+    return {
+      id: this._currentUserId,
+      email: this._currentUserEmail,
+      fullName: this._currentUserFullName
+    };
+  }
 
   addUser(user: ProfileUser): Promise<void> {
     const ref = doc(this.firestore, 'users', user.uid);

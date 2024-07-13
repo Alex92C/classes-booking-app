@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, OnDestroy, OnInit, Signal, signal } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { ListViewItemComponent } from '../list-view-item/list-view-item.component';
 import { CalendarModule } from 'primeng/calendar';
@@ -6,6 +6,8 @@ import { NgModel, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ClassItemService } from '../../services/classItem.service';
 import { EncodingService, IEncodedBookingItem, IEncodedClassItem } from '../../services/encoding.service';
+import { NotificationService } from '../../services/notification.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -16,33 +18,30 @@ import { EncodingService, IEncodedBookingItem, IEncodedClassItem } from '../../s
   styleUrls: ['./home.component.scss'],
   imports: [CommonModule, ListViewItemComponent, CalendarModule, FormsModule, ReactiveFormsModule],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   // private classes: AngularFirestoreCollection<any>;
+  private subscription: Subscription;
 
   constructor(
     public usersService: UsersService,
     private classItemService: ClassItemService,
-    /// testing
-    // private afs: AngularFirestore
+    private notificationService: NotificationService
   ) {
     this.maxDate.setDate(this.maxDate.getDate() + 8 * 7);
-    // this.classes = this.afs.collection('classes');
-
-    // this.getAllDocuments().subscribe(docs => {
-    //   this.documents = docs;
-    //   console.log('Documents:', this.documents);
-    // });
+    this.subscription = this.notificationService.notification$.subscribe(message => {
+      if (message) {
+        this.notificationService.success(message);
+        console.log(message);
+      }
+    });
   }
 
   // TESTING ENCODING
   service = new EncodingService();
 
 
-
-
-
-
   ngOnInit(): void {
+
     const mockClassItem: IEncodedClassItem = {
       date: '2024-06-22',
       time: '13:00',
@@ -125,5 +124,7 @@ export class HomeComponent {
     this.classItemService.onViewAllClick();
   }
 
-
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

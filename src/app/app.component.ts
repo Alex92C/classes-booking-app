@@ -22,7 +22,6 @@ import { UsersService } from './services/users.service';
     MatIconModule,
     MatProgressSpinnerModule,
     RouterModule,
-
   ],
   template: `
     <!-- <div class="bg-image-full"> -->
@@ -94,12 +93,22 @@ export class AppComponent {
   currentUser = this.usersService.currentUserProfile;
   loading = this.notificationService.loading;
 
+  ngOnInit(): void {
+    this.notificationService.notification$.subscribe(message => {
+      if (message) {
+        this.notificationService.success(message);
+        console.log(message);
+      }
+    });
+  }
+
   async logout() {
     this.notificationService.showLoading();
     await this.authService.logout();
     this.notificationService.hideLoading();
     this.router.navigate(['/login']);
   }
+
 
   toProfile() {
     this.router.navigate(['/profile']);

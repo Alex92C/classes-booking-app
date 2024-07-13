@@ -16,7 +16,8 @@ export class ClassItemService {
 
 
 
-  constructor(private firestoreService: FirestoreService,
+  constructor(
+    private firestoreService: FirestoreService,
     private encodingService: EncodingService
   ) {
     this.classItemsSubject = new BehaviorSubject<IClassItem[]>([]);

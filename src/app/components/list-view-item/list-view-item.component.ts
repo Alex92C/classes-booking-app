@@ -56,7 +56,7 @@ export class ListViewItemComponent implements OnInit, OnChanges {
     this.openedIndex = this.openedIndex === idx ? null : idx;
   }
 
-  onBookClick(item: any): void {
+  onBookClick($event: Event, item: any): void {
     console.log("BOOKING ITEM", item);
     this.bookingService.updateItem(item);
     this.router.navigate(['/booking']);
