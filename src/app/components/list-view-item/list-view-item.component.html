@@ -14,7 +14,8 @@
         <img [src]="item?.image" alt="class image" class=" card-image" />
       </div>
       <div class="col-4 flex-center">
-        <button class="btn btn-primary px-4 text-white" (click)="onBookClick(item)">BOOK</button>
+        <button class="btn btn-primary px-4 text-white"
+          (click)="onBookClick($event, item); $event.stopPropagation()">Book</button>
       </div>
     </div>
     <span class="p-1 px-4 inner-card text-white" (click)="toggleDetails(idx)">view details <i
