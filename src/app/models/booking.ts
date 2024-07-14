@@ -4,4 +4,5 @@ export interface IBookingItem {
   time: string;
   image: string;
   instructor: string;
+  createdAt: string;
 }

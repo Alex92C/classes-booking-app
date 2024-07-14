@@ -35,7 +35,16 @@ export class FirestoreService {
   }
 
   getBookings(userId: string): Observable<IBookingItem[]> {
+    console.log('getting bookings for user:', userId);
     return this.afs.collection(`users/${userId}/bookings`).valueChanges() as Observable<IBookingItem[]>;
+  }
+
+  getLatestBookings(userId: string): Observable<IBookingItem[]> {
+    console.log('getting latest booking for user:', userId);
+    return this.afs.collection(`users/${userId}/bookings`, ref => ref
+      .orderBy('createdAt', 'desc')
+      .limit(5)
+    ).valueChanges() as Observable<IBookingItem[]>;
   }
 
   addClassItem(docData: any): Promise<AngularFirestoreDocument<any>> {
