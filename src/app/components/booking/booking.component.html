@@ -9,6 +9,6 @@
     <p>Available 5 out of {{ (item$ | async)?.maxAttendance }} spots</p>
     <!-- <p>{{ (item$ | async)?.location }}</p> -->
     <p>Refud and no-show terms</p>
-    <button type="button" class="btn btn-success text-center"> Confirm </button>
-    </div>
+    <button class="btn btn-primary px-4 mt-4 text-white" (click)="onConfirmBooking()">Confirm Booking</button>
   </div>
+</div>

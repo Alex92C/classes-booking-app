@@ -129,3 +129,17 @@ body {
   opacity: 0.5;
   z-index: -10;
 }
+
+.mat-mdc-snack-bar-container {
+  &.green-snackbar {
+    --mdc-snackbar-container-color: #00d41c;
+    --mat-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+  }
+
+  &.red-snackbar {
+    --mdc-snackbar-container-color: #ff0000;
+    --mat-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+  }
+}
